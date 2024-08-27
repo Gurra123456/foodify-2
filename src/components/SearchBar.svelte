@@ -1,6 +1,4 @@
 <script>
-	import SearchButton from './SearchButton.svelte';
-
 	export let text;
 
 	let visible = true;
@@ -21,7 +19,7 @@
 		>{text}
 	</button>
 {:else}
-	<form action="/" class="flex w-full">
+	<form action="/search-result" class="flex w-full">
 		<div class="flex w-full justify-center">
 			<input
 				class={visible
