@@ -3,10 +3,9 @@
 	import Header from '../components/Header.svelte';
 </script>
 
-
-<div class="h-screen font-mono grid justify-items-center">
+<div class="font-mono grid justify-items-center">
 	<Header />
-  <slot />
+	<slot></slot>
 </div>
 
 <style lang="postcss">

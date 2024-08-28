@@ -2,13 +2,27 @@
 	export let text;
 
 	let visible = true;
+	let searchQuery = '';
 
 	function toggleVissible() {
 		visible = !visible;
 	}
 
-	function handleSearch() {
-		console.log();
+	// Generate slug from the search query
+	function generateSlug(query) {
+		return query
+			.toLowerCase()
+			.trim()
+			.replace(/[^a-z0-9]+/g, '-') // Replace spaces and non-alphanumeric characters with hyphens
+			.replace(/^-+|-+$/g, ''); // Remove leading and trailing hyphens
+	}
+
+	function handleSearch(event) {
+		event.preventDefault();
+		const slug = generateSlug(searchQuery);
+
+		// Navigate to the search result page with the generated slug
+		window.location.href = `/search-result/${slug}`;
 	}
 </script>
 
@@ -16,32 +30,33 @@
 	<button
 		on:click={toggleVissible}
 		class=" bg-black text-white tracking-tight text-xl rounded-3xl w-48 h-12 hover:bg-orange-600"
-		>{text}
-	</button>
+		>{text}</button
+	>
 {:else}
-	<form action="/search-result" class="flex w-full">
+	<form on:submit={handleSearch} class="flex w-full">
 		<div class="flex w-full justify-center">
 			<input
-				class={visible
-					? 'rounded-3xl outline-0 w-48 h-12 text-black bg-white'
-					: 'ps-5 pe-14 text-lg rounded-3xl outline-0 w-5/6 h-12 text-black bg-white'}
+				class="ps-5 pe-14 text-lg rounded-3xl w-48 outline-0 h-12 text-black bg-white overflow-hidden"
 				placeholder="Search for a recipe..."
 				type="text"
 				name="search"
+				id="search-input"
+				bind:value={searchQuery}
 			/>
-		</div>
-		<div class="absolute end-14">
 			<button
+				id="search-button"
 				type="submit"
-				class=" bg-black text-white tracking-tight text-xl rounded-3xl w-12 h-12 hover:bg-orange-600"
-				><svg width="24" height="24" fill="none" aria-hidden="true" class="mx-auto"
-					><path
+				class="-ms-12 bg-black text-white tracking-tight text-xl rounded-3xl w-12 h-12 hover:bg-orange-600"
+			>
+				<svg width="24" height="24" fill="none" aria-hidden="true" class="mx-auto">
+					<path
 						d="m19 19-3.5-3.5"
 						stroke="currentColor"
 						stroke-width="2"
 						stroke-linecap="round"
 						stroke-linejoin="round"
-					></path><circle
+					></path>
+					<circle
 						cx="11"
 						cy="11"
 						r="6"
@@ -49,13 +64,25 @@
 						stroke-width="2"
 						stroke-linecap="round"
 						stroke-linejoin="round"
-					></circle></svg
-				>
+					></circle>
+				</svg>
 			</button>
 		</div>
 	</form>
 {/if}
 
 <style>
-	/* styles go here */
+	#search-input {
+		animation: expand 0.3s forwards;
+	}
+
+	/* Keyframe animation to expand input width */
+	@keyframes expand {
+		from {
+			width: 12rem;
+		}
+		to {
+			width: 80%;
+		}
+	}
 </style>
