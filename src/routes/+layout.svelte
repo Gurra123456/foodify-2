@@ -3,7 +3,7 @@
 	import Header from '../components/Header.svelte';
 </script>
 
-<div class="font-mono grid justify-items-center">
+<div class="font-mono flex flex-col container mx-auto justify-items-center h-screen">
 	<Header />
 	<slot></slot>
 </div>
