@@ -1,10 +1,7 @@
 {
 	"/": [],
 	"/about": [],
-	"/search-result": [
-		"src/routes/search-result/+page.server.js"
-	],
 	"/search-result/[slug]": [
-		"src/routes/search-result/[slug]/+page.server.js"
+		"src/routes/search-result/[slug]/+page.server.ts"
 	]
 }

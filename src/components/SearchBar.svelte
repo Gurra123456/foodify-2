@@ -9,14 +9,20 @@
 	}
 
 	// Generate slug from the search query
+	/**
+	 * @param {string} query
+	 */
 	function generateSlug(query) {
 		return query
 			.toLowerCase()
 			.trim()
-			.replace(/[^a-z0-9]+/g, '-') // Replace spaces and non-alphanumeric characters with hyphens
-			.replace(/^-+|-+$/g, ''); // Remove leading and trailing hyphens
+			.replace(/\s+/g, '_') // Replace spaces with underscores
+			.replace(/[^a-z0-9_]+/g, ''); // Remove any other non-alphanumeric characters (excluding underscores)
 	}
 
+	/**
+	 * @param {{ preventDefault: () => void; }} event
+	 */
 	function handleSearch(event) {
 		event.preventDefault();
 		const slug = generateSlug(searchQuery);
