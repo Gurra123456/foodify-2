@@ -9,14 +9,20 @@
 	}
 
 	// Generate slug from the search query
+	/**
+	 * @param {string} query
+	 */
 	function generateSlug(query) {
 		return query
 			.toLowerCase()
 			.trim()
-			.replace(/[^a-z0-9]+/g, '-') // Replace spaces and non-alphanumeric characters with hyphens
-			.replace(/^-+|-+$/g, ''); // Remove leading and trailing hyphens
+			.replace(/\s+/g, '_') // Replace spaces with underscores
+			.replace(/[^a-z0-9_]+/g, ''); // Remove any other non-alphanumeric characters (excluding underscores)
 	}
 
+	/**
+	 * @param {{ preventDefault: () => void; }} event
+	 */
 	function handleSearch(event) {
 		event.preventDefault();
 		const slug = generateSlug(searchQuery);
@@ -29,7 +35,7 @@
 {#if visible}
 	<button
 		on:click={toggleVissible}
-		class=" bg-black text-white tracking-tight text-xl rounded-3xl w-48 h-12 hover:bg-orange-600"
+		class="bg-black text-white tracking-tight text-xl rounded-3xl w-48 h-12 hover:bg-orange-600"
 		>{text}</button
 	>
 {:else}

@@ -1,6 +1,7 @@
+// @ts-nocheck
 import { error } from '@sveltejs/kit';
 
-/** @type {import('./$types').PageServerLoad} */
+/** @param {Parameters<import('./$types').PageServerLoad>[0]} event */
 export async function load({ params }) {
 	const ingredient = params.slug;
 
