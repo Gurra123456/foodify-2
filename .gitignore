@@ -140,3 +140,4 @@ dist
 .svelte-kit/types/src/routes/search-result/\[slug\]/proxy+page.server.ts
 vite.config.ts.timestamp-1725024086209-eebde34a30ed2.mjs
 vite.config.ts.timestamp-1725024104165-a772d7f580f8a.mjs
+*.mjs
