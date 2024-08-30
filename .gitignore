@@ -128,3 +128,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+.svelte-kit/generated/server/internal.js
+.svelte-kit/types/route_meta_data.json
+.svelte-kit/types/src/routes/search-result/\[slug\]/$types.d.ts
+.svelte-kit/types/src/routes/search-result/\[slug\]/proxy+page.server.ts
